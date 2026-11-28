@@ -2,6 +2,11 @@
 
 版本标签从 `v0.0.1` 开始，该版本包含此前的全部提交。更早的分节以提交定位历史变更。
 
+## v0.0.4
+
+- Workspace 镜像 `ghcr.io/coachpo/cloudex-workspace` 随 Cloudex 发版，与 APP 镜像使用相同的发布标签，不再按 Codex 版本定时发布 `codex-<版本>` 标签。预构建的 `cloudex-api` 默认引用同一提交的 `cloudex-workspace:sha-<完整提交>`，使用前在各 Host 拉取该镜像。[预构建镜像](docs/operations.md#预构建镜像) · [默认工作镜像](docs/operations.md#默认工作镜像)
+- 从源码用 Compose 构建时，`CLOUDEX_WORKSPACE_IMAGE` 同时决定工作镜像的构建标签和 API 内置的默认镜像，默认值改为 `cloudex/workspace:local`。升级后先重新构建工作镜像，已有 Workspace 继续使用创建时的镜像引用。[默认工作镜像](docs/operations.md#默认工作镜像)
+
 ## v0.0.3
 
 - 同一轮工具往返中触发自动压缩后，Codex 在新上下文窗口的续写可经 WS 和 HTTP/SSE 正常完成，不再收到 `409 submission_outcome_unknown`。[流式转发](docs/codex-gateway.md#流式转发)
